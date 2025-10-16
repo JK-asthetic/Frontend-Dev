@@ -1,0 +1,22 @@
+/* Basic layout */n*{box-sizing:border-box}
+body{margin:0;font-family:Georgia, 'Times New Roman', serif;background:#f5f7fb;color:#102a43}
+header{padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#e6eef8,#fff)}
+header nav a{margin-left:1rem;text-decoration:none;color:#0b3d91}
+main{display:block}
+section{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:3rem 2rem;border-bottom:1px solid rgba(0,0,0,0.05)}
+
+
+/* Full width backgrounds */
+.intro{background-image:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('https://via.placeholder.com/1600x900');background-size:cover;background-position:center;background-attachment:fixed;color:#fff}
+.history{background:linear-gradient(45deg,#fff6e5,#ffe9f0);background-attachment:scroll}
+.culture{background:radial-gradient(circle at 20% 20%, #fff5f0, #ffe);background-attachment:fixed}
+.visit{background-image:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9)), url('https://via.placeholder.com/1600x900?text=Visit');background-size:cover;background-position:center}
+
+
+/* Headings with different sizes and weights */
+section h2{font-size:2.2rem;font-weight:700;margin:0 0 0.5rem}
+section p{font-size:1rem;margin:0;max-width:800px}
+
+
+/* Spacing */nsection{padding:4rem 6%}
+footer{padding:1rem;text-align:center}

@@ -1,0 +1,14 @@
+body{margin:2rem;font-family:Georgia,'Times New Roman',serif;background:#fffefb;color:#111}
+header h1{font-size:2.4rem;margin:0 0 0.5rem}
+.sub{font-size:0.95rem;color:#6b7280;margin-bottom:1.25rem}
+article p{margin:1rem 0;line-height:1.7;text-align:justify}
+
+
+/* first letter larger */
+article p::first-letter{font-size:2.2rem;font-weight:700;float:left;margin-right:0.3rem}
+/* first line bold */
+article p::first-line{font-weight:700}
+
+
+mark{background:#fff3bf;padding:0.15rem 0.25rem;border-radius:3px}
+blockquote{border-left:6px solid rgba(0,0,0,0.12);background:#fbfbfb;padding:1rem;margin:1.25rem 0}
