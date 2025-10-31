@@ -1,0 +1,7 @@
+/* q9 - Outline & Focus */
+body{font-family:Arial;padding:24px}
+.simple{display:flex;flex-direction:column;gap:12px;max-width:420px}
+label{display:flex;flex-direction:column;gap:6px}
+input,textarea{padding:8px;border-radius:6px;border:1px solid #ccc;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+input:focus,textarea:focus{outline:3px solid #6ec1ff;outline-offset:4px}
+button{padding:10px;border-radius:6px;border:none;background:#2d7;cursor:pointer}

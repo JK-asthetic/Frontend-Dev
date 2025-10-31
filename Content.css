@@ -1,0 +1,6 @@
+/* q8 - Box Model */
+body{font-family:Arial;padding:24px}
+.center{display:flex;gap:24px;align-items:center;justify-content:center;height:70vh}
+.box-model{background:#f7f7f7;padding:18px;border:6px solid #d1d1d1;margin:20px;box-sizing:content-box}
+.box-model .content{background:#fff;padding:16px;border:4px dashed #9b9b9b}
+.explain{max-width:360px}

@@ -1,0 +1,10 @@
+/* q2 - Height & Width */
+/* Center using Flexbox */
+body{font-family:Arial;margin:0;padding:20px}
+.center{display:flex;gap:16px;align-items:center;justify-content:center;height:60vh}
+.box{display:flex;align-items:center;justify-content:center;color:white;padding:8px;overflow:auto}
+.px{width:200px;height:120px;background:#4a90e2}
+.pct{width:60%;min-height:20vh;background:#7ed321;max-width:420px}
+.em{width:20em;height:8em;background:#f5a623;min-height:80px}
+/* Show overflow example */
+.pct p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

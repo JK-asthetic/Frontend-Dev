@@ -1,0 +1,27 @@
+/* q5 - Advanced selectors */
+
+/* Attribute selector - selects text inputs */
+input[type="text"]{padding:8px;border:1px solid #bbb}
+
+/* Attribute selector for links that start with https */
+a[href^="https"]{font-weight:bold;text-decoration:underline}
+
+/* pseudo-classes */
+a:hover{opacity:.8}
+input:focus{outline:2px solid #4a90e2}
+
+/* nth-child - style the 3rd list item (1-based index) */
+.links li:nth-child(3){color:#e74c3c;font-weight:600}
+
+/* combinators examples */
+/* direct child selector */
+main > ul{margin-top:12px}
+
+/* adjacent sibling (+) - style label immediately after checkbox */
+input[type="checkbox"] + label{margin-left:6px}
+
+/* general sibling (~) — style any later paragraph */
+input ~ p{font-style:italic}
+
+/* pseudo-elements */
+.links li::before{content:"• ";color:#888}
