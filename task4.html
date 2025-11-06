@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Task 2 — Image Gallery & CSS Selectors</title>
+    <style>
+      /* -----------------------------
+			 Selector demonstrations
+			 - element selector: selects by tag name
+			 - class selector: selects by .classname
+			 - ID selector: selects single element by #id
+			 - attribute selector: selects elements with an attribute
+			 - combinators: child (A > B), adjacent (A + B), general sibling (A ~ B), descendant (A B)
+			 ----------------------------- */
+
+      /* Element selector: style all paragraphs */
+      p {
+        color: #333;
+        line-height: 1.45;
+        margin: 0 0 0.75rem 0;
+      }
+
+      /* ID selector: unique page heading */
+      #main-heading {
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        font-size: 1.6rem;
+        margin: 0;
+        color: #111;
+      }
+
+      header {
+        padding: 1rem 1rem 0.5rem 1rem;
+        border-bottom: 1px solid #e6e6e6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      /* Child combinator: only direct children links inside nav are targeted */
+      header > nav a {
+        text-decoration: none;
+        color: #0b66c2;
+        margin-left: 0.5rem;
+        font-weight: 600;
+      }
+
+      /* Class selector: gallery container */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      /* Class selector for each item */
+      .gallery-item {
+        position: relative; /* for overlay and caption positioning */
+        overflow: hidden;
+        border-radius: 12px; /* rounded corners */
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+        background: #fff;
+        transition: transform 300ms ease, box-shadow 300ms ease;
+      }
+
+      /* Attribute selector: style any image that has an alt attribute */
+      img[alt] {
+        display: block;
+        width: 100%;
+        height: auto;
+        transform-origin: center center;
+        transition: transform 400ms ease;
+        /* vertical-align is unnecessary for block-level images */
+      }
+
+      /* Hover effect: scale image and reveal a dark overlay using ::after */
+      .gallery-item::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0); /* start transparent */
+        transition: background 300ms ease;
+        pointer-events: none;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-6px); /* subtle lift */
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.08); /* hover scale (1.1 approx) */
+      }
+
+      .gallery-item:hover::after {
+        background: rgba(0, 0, 0, 0.28); /* dark overlay on hover */
+      }
+
+      /* Descendant selector: figcaption inside .gallery */
+      .gallery figcaption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 1rem;
+        color: #fff;
+        transform: translateY(100%);
+        transition: transform 300ms ease, opacity 300ms ease;
+        opacity: 0;
+        font-weight: 600;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.45),
+          rgba(0, 0, 0, 0.12)
+        );
+      }
+
+      /* Show caption on hover */
+      .gallery-item:hover figcaption {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+
+      /* Adjacent sibling selector: style list that follows a paragraph */
+      p + ul {
+        margin-top: 0.25rem;
+        padding-left: 1rem;
+        color: #444;
+      }
+
+      /* General sibling selector: any paragraph that follows an h2 will be emphasized */
+      h2 ~ p {
+        color: #0b66c2;
+      }
+
+      footer {
+        padding: 1rem;
+        border-top: 1px solid #e6e6e6;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #666;
+      }
+
+      /* Responsive: single column below 700px */
+      @media (max-width: 700px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="main-heading">Image Gallery — Task 3 & 4</h1>
+      <nav aria-label="Main navigation">
+        <!-- child combinator above targets these links specifically -->
+        <a href="#">Home</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+    </header>
+
+    <main>
+      <section style="padding: 1rem">
+        <h2>About this demo</h2>
+        <p>
+          This page demonstrates a responsive image gallery with hover effects
+          and CSS selectors.
+        </p>
+        <p>
+          Below is a list that immediately follows a paragraph — styled with the
+          adjacent sibling <code>p + ul</code> selector.
+        </p>
+        <ul>
+          <li>Element selector: <code>p</code></li>
+          <li>Class selector: <code>.gallery-item</code></li>
+          <li>ID selector: <code>#main-heading</code></li>
+          <li>Attribute selector: <code>img[alt]</code></li>
+        </ul>
+      </section>
+
+      <section id="gallery" class="gallery" aria-label="Photo gallery">
+        <!-- Six figures with images + captions -->
+        <figure class="gallery-item">
+          <img src="https://picsum.photos/seed/1/800/600" alt="Landscape 1" />
+          <figcaption>Landscape 1 — Nature</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://picsum.photos/seed/2/800/600" alt="Landscape 2" />
+          <figcaption>Landscape 2 — Valley</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://picsum.photos/seed/3/800/600" alt="City 1" />
+          <figcaption>City 1 — Skyline</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://picsum.photos/seed/4/800/600" alt="City 2" />
+          <figcaption>City 2 — Streets</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://picsum.photos/seed/5/800/600" alt="Forest" />
+          <figcaption>Forest — Green</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://picsum.photos/seed/6/800/600" alt="Mountain" />
+          <figcaption>Mountain — Peak</figcaption>
+        </figure>
+      </section>
+
+      <section style="padding: 1rem">
+        <h2>Selectors quick demo</h2>
+        <p>
+          Some paragraph that will be styled by <code>h2 ~ p</code> because it
+          follows an h2 (general sibling).
+        </p>
+        <p>
+          Another paragraph to demonstrate default element selector styling.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Made as part of Task 3 &amp; 4 — demonstrates layout, hover overlay,
+        captions, and CSS selectors.
+      </p>
+      <p>
+        Images served from
+        <a href="https://picsum.photos" target="_blank" rel="noopener"
+          >picsum.photos</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
