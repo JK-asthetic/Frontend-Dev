@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Custom Theme (Coral & Teal)</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* Define custom theme colors using CSS variables */
+    :root {
+      --bs-primary: coral;     /* overrides Bootstrap primary */
+      --bs-secondary: teal;    /* overrides Bootstrap secondary */
+      --bs-success: #20c997;
+      --bs-info: #17a2b8;
+      --bs-warning: #ffc107;
+      --bs-danger: #dc3545;
+    }
+
+    /* Optional: Customize button hover styles */
+    .btn-primary:hover {
+      background-color: #ff7f50d9; /* lighter coral */
+      border-color: #ff7f50d9;
+    }
+
+    .btn-secondary:hover {
+      background-color: #008080cc; /* lighter teal */
+      border-color: #008080cc;
+    }
+
+    body {
+      background-color: #fef6f4;
+      padding: 40px;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container text-center">
+    <h1 class="mb-4 text-primary">Custom Coral & Teal Theme</h1>
+
+    <p class="text-secondary">
+      This example overrides Bootstrap’s default color variables with CSS custom properties.
+    </p>
+
+    <div class="mt-4">
+      <button class="btn btn-primary me-3">Primary Button</button>
+      <button class="btn btn-secondary">Secondary Button</button>
+    </div>
+
+    <div class="alert alert-primary mt-4" role="alert">
+      This is a primary alert using the coral theme!
+    </div>
+
+    <div class="alert alert-secondary" role="alert">
+      This is a secondary alert using the teal theme!
+    </div>
+  </div>
+
+</body>
+</html>
