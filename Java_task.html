@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      function divide(a, b) {
+        try {
+          if (b === 0) {
+            document.getElementById("division").innerHTML =
+              "Error: Division by zero is not allowed.";
+
+            throw new Error("Division by zero is not allowed.");
+          } else {
+            document.getElementById("division").innerHTML = "Result: " + a / b;
+            console.log("Division successful. -> " + a / b);
+          }
+        } catch (error) {
+          console.error(error.message);
+        }
+        return a / b;
+      }
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>JavaScript Exception Handling Example</h1>
+    <label>First Number: </label>
+    <input type="number" id="num1" value="10" />
+    <label>Second Number: </label>
+    <input type="number" id="num2" value="0" />
+    <p id="division"></p>
+    <button onclick="handleDivide()">Calculate</button>
+    <script>
+      function handleDivide() {
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        divide(num1, num2);
+      }
+    </script>
+  </body>
+</html>
