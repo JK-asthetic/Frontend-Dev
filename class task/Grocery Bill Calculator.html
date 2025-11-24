@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Grocery Bill Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        text-align: center;
+        padding-top: 60px;
+      }
+      .box {
+        width: 350px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      }
+      input {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      button {
+        background: teal;
+        padding: 10px 20px;
+        border: none;
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      #result {
+        margin-top: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>Grocery Bill Calculator</h2>
+
+      <input type="number" id="price" placeholder="Enter price per item" />
+      <input type="number" id="quantity" placeholder="Enter quantity" />
+
+      <button onclick="calculateBill()">Calculate Bill</button>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function calculateBill() {
+        let price = parseFloat(document.getElementById("price").value);
+        let quantity = parseInt(document.getElementById("quantity").value);
+
+        if (isNaN(price) || isNaN(quantity)) {
+          document.getElementById("result").innerHTML =
+            "⚠ Please enter valid numbers!";
+          return;
+        }
+
+        let total = price * quantity;
+
+        // Apply 10% discount if total > 1000
+        if (total > 1000) {
+          total = total - total * 0.1;
+        }
+
+        document.getElementById("result").innerHTML =
+          "Final Amount: ₹ " + total.toFixed(2);
+      }
+    </script>
+  </body>
+</html>

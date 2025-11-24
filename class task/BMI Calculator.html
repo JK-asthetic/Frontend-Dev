@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BMI Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        text-align: center;
+        padding-top: 60px;
+      }
+      .box {
+        width: 380px;
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        margin: auto;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+      }
+      input {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      button {
+        background: #0077cc;
+        padding: 10px 20px;
+        border: none;
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      #result {
+        margin-top: 15px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #444;
+      }
+      .progress {
+        width: 90%;
+        background: #ddd;
+        border-radius: 40px;
+        margin: 15px auto;
+        height: 25px;
+        overflow: hidden;
+      }
+      .progress-bar {
+        height: 100%;
+        background: #28a745;
+        width: 0%;
+        transition: 0.6s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>BMI Calculator</h2>
+
+      <input type="number" id="weight" placeholder="Enter weight (kg)" />
+      <input type="number" id="height" placeholder="Enter height (m)" />
+
+      <button onclick="calculateBMI()">Calculate BMI</button>
+
+      <div id="result"></div>
+
+      <!-- Progress bar -->
+      <div class="progress">
+        <div id="bar" class="progress-bar"></div>
+      </div>
+    </div>
+
+    <script>
+      function calculateBMI() {
+        let w = parseFloat(document.getElementById("weight").value);
+        let h = parseFloat(document.getElementById("height").value);
+
+        if (isNaN(w) || isNaN(h) || h <= 0) {
+          document.getElementById("result").innerHTML =
+            "⚠ Please enter valid numbers!";
+          return;
+        }
+
+        // BMI formula (arithmetic operator)
+        let bmi = w / (h * h);
+
+        // Display BMI classification using comparison operators
+        let status = "";
+        if (bmi < 18.5) status = "Underweight";
+        else if (bmi < 25) status = "Normal";
+        else if (bmi < 30) status = "Overweight";
+        else status = "Obese";
+
+        document.getElementById("result").innerHTML =
+          "BMI: " + bmi.toFixed(2) + " (" + status + ")";
+
+        // Progress bar (scale BMI to max width ~ 40 BMI)
+        let percent = Math.min((bmi / 40) * 100, 100);
+        document.getElementById("bar").style.width = percent + "%";
+
+        // Change bar color based on BMI
+        if (status === "Underweight")
+          document.getElementById("bar").style.background = "#007bff";
+        else if (status === "Normal")
+          document.getElementById("bar").style.background = "#28a745";
+        else if (status === "Overweight")
+          document.getElementById("bar").style.background = "#ff9800";
+        else document.getElementById("bar").style.background = "#dc3545";
+      }
+    </script>
+  </body>
+</html>
